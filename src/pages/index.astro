@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+const allTools = await getCollection("tools");
+allTools.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="AI tools and application lists">
+  <main class="m-0 p-0">
+    <Header />
+    <div class="flex border-t border-gray-500">
+      <Sidebar />
+      <div class="p-4">
+        <h1 class="text-center text-4xl font-bold mt-2 mb-5">AI TOOLS</h1>
+        <p class="mb-4">
+          List of the most popular and innovative AI applications and tools
+          built on top of powerful LLMs that assist people in their work. These
+          tools harness the potential of advanced machine learning to streamline
+          tasks and enhance productivity. From content creation to data
+          analysis, they are revolutionizing the way professionals operate.
+        </p>
+        <div class="flex flex-wrap justify-start gap-6">
+          {allTools.map((tool) => <Card tool={tool} />)}
+        </div>
+      </div>
+    </div>
+    <Footer />
+  </main>
+</Layout>

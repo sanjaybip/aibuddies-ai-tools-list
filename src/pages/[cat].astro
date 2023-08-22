@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { cat: "text-ai-tools" },
+      props: {
+        desc: "List of AI tools that help you with anything related to text and natural language processing. These tools leverage cutting-edge algorithms to understand and generate human-like text. From sentiment analysis to content summarization, they offer a wide range of capabilities to enhance communication and data interpretation.",
+      },
+    },
+    {
+      params: { cat: "audio-ai-tools" },
+      props: {
+        desc: "List of AI tools that assist you with anything related to audio and sound processing. These tools utilize advanced algorithms to analyze and generate lifelike audio. From noise reduction to voice synthesis, they offer a broad spectrum of capabilities to improve sound quality and interpretation.",
+      },
+    },
+    {
+      params: { cat: "image-ai-tools" },
+      props: {
+        desc: "List of AI tools that aid you with anything related to image and visual processing. These tools employ sophisticated algorithms to analyze and generate high-quality visuals. From object detection to image enhancement, they provide a diverse range of capabilities to enhance visual content and interpretation.",
+      },
+    },
+    {
+      params: { cat: "video-ai-tools" },
+      props: {
+        desc: "List of AI tools that support you with anything related to video and motion processing. These tools harness advanced algorithms to analyze and produce dynamic video content. From motion tracking to video summarization, they offer a comprehensive range of capabilities to elevate video quality and understanding.",
+      },
+    },
+    {
+      params: { cat: "coding-assistance-ai-tools" },
+      props: {
+        desc: "List of AI tools that assist you with anything related to coding and programming. These tools utilize cutting-edge algorithms to understand and generate code efficiently. From code suggestions to debugging assistance, they provide a wide array of capabilities to enhance software development and problem-solving.",
+      },
+    },
+  ];
+}
+
+const { cat } = Astro.params;
+const catTools = await getCollection("tools", ({ id }) => {
+  if (cat != undefined) {
+    return id.startsWith(cat);
+  }
+});
+catTools.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const catName = cat?.replaceAll("-", " ").toUpperCase();
+const { desc } = Astro.props;
+
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title={catName || ""}>
+  <main class="m-0 p-0">
+    <Header />
+    <div class="flex border-t border-gray-500">
+      <Sidebar />
+      <div class="py-2 px-4">
+        <h1 class="text-center text-4xl font-bold mt-2 mb-5">{catName}</h1>
+        <p class="mb-4">{desc}</p>
+        <div class="flex flex-wrap justify-start gap-6">
+          {catTools.map((tool) => <Card tool={tool} />)}
+        </div>
+      </div>
+    </div>
+    <Footer />
+  </main>
+</Layout>
