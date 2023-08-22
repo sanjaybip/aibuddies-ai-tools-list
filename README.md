@@ -1,54 +1,35 @@
-# Astro Starter Kit: Basics
+# AIBuddies: AI tools list and community
 
-```
-npm create astro@latest -- --template basics
-```
+AIBuddies is like a hangout spot for AI geeks and fans. We chat about cool AI stuff and share what's new and exciting in the world of Artificial Intelligence. Whether you're an expert or just curious, there's always something fun to dive into here. Join the gang and let's geek out together!
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+We list the best AI tools that can be used to boost productivity and receive assistance from AI for various tasks. These tools are game-changers, transforming the way we approach challenges and streamline operations. With cutting-edge technology at your fingertips, you're not just working smarter, but you're also staying ahead of the curve.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## How to add project?
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Just create a pull request with the project details in `.json` format and place in most suitable folder inside `src/content/tools/`. You can browse any of the existing `.json` file to understand the data structure. You also need to add logo of the tool inside `public/logos/` folder, the size of the logo should be between (150px - 512px) and it should be square. Below is the example
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```json
+{
+  "title": "ElevenLabs.",
+  "logo": "eleven-lines-hqbg-min.png",
+  "desc": "Explore the most advanced text to speech, voice cloning software and lifelike voiceovers for your content.",
+  "date": "2023-08-16",
+  "website": "https://elevenlabs.io/",
+  "video": "https://www.youtube.com/watch?v=qRPTwPuZLjk"
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+```
+- title is the name of the tool
+- logo is name of the logo file (put it inside `public/logos` folder. Add png or jpg image )
+- desc is the descrption of the tool. keep it less than 100 characters
+- date (format yyyy-mm-dd) and string. Add the current date
+- website is the actual url where a user can access the tool to learn more about it.
+- video is the link of a video resource that a user can access and see its working. (this is optional but we recommed adding it)
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🚀 Join community
 
-Any static assets, like images, can be placed in the `public/` directory.
+You can join our community to connect with like-minded people interested in machine learning, artificial intelligence, and data science. We discuss various tools and how to use them effectively for your day-to-day work.
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[Discord](https://discord.gg/uhzx9sGMwt)
